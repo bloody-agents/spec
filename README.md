@@ -51,3 +51,15 @@ The `Step` class has these attributes:
 - `context` - optional, in the case it was changed
 - `tool_calls: list[ToolCall]` (`ToolCall = (str, dict[str, Any], dict[str, Any])` - (tool name, input, context))
 
+### Agent implementations
+
+- OpenAI Functions agent
+- Any LLM agent with ReAct
+- BabyAGI
+- Taskmaster
+
+### Server protocol
+
+The implementations for `ServerChannel` and `ClientChannel`.
+
+The server can return lists of available tools and agents (`list[AgentRepr]`, `list[ToolRepr]`) and create the websockets for running the agents. 
