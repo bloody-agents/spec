@@ -14,6 +14,13 @@ This project is meant to be as general as possible, allowing to create any type 
 
 A useage example: let's say you are building an agent for sales outreach. Then, your clients will be able to use custom subagents for researching/writing, including from other servers. Or you have something which involves characters, and the characters will be able to be imported from anywhere.
 
+The goal is that in the end, something like this will be possible:
+
+```python
+print('Result:', get_agent('Taskmaster', subagents=['Writer', 'Planner', 'researchagents.com/WebResearcher', 'TermAgent'], tools=['Terminal', 'WriteFile']).run('Research information about AI agents, write an overview article about them in LaTeX, and give me the pdf').result())
+# Result: {'pdf_path': 'agents_overview.pdf'}
+```
+
 <img src="map.png" style="zoom: 33%;" />
 
 ### The Agent
@@ -75,13 +82,6 @@ There should be a possibility to define agents from supported types in a yaml fi
 The implementations for `ServerChannel` and `ClientChannel`.
 
 The server can return lists of available tools and agents (`list[AgentRepr]`, `list[ToolRepr]`) and create the websockets for running the agents. 
-
-In the end, something like this should be possible:
-
-```python
-print('Result:', get_agent('Taskmaster', subagents=['Writer', 'Planner', 'researchagents.com/WebResearcher', 'TermAgent'], tools=['Terminal', 'WriteFile']).run('Research information about AI agents, write an overview article about them in LaTeX, and give me the pdf').result())
-# Result: {'pdf_path': 'agents_overview.pdf'}
-```
 
 
 
