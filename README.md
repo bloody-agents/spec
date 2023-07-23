@@ -53,13 +53,33 @@ The `Step` class has these attributes:
 
 ### Agent implementations
 
+- A basic LLM should be the most basic agent 
 - OpenAI Functions agent
 - Any LLM agent with ReAct
+- Langchain wrapper
 - BabyAGI
 - Taskmaster
+
+There should be a possibility to define agents from supported types in a yaml file, like [here](https://github.com/ennucore/clippy/blob/master/clippy/minions/specialized_minions.yaml).
 
 ### Server protocol
 
 The implementations for `ServerChannel` and `ClientChannel`.
 
 The server can return lists of available tools and agents (`list[AgentRepr]`, `list[ToolRepr]`) and create the websockets for running the agents. 
+
+### Integrations
+
+**🦜️🔗 Langchain** 
+
+Langchain should be an optional dependency. It should be interoperable with this library through this functionality:
+
+- Turning supported LLMs into agents
+- Using Langchain agents and tools through wrappers
+- Exporting the bloody agents to Langchain
+
+This will allow us to take advantage of Langsmith, Langchain's integrations, token usage tracking, etc.
+
+**Genworlds**
+
+[Genworlds](https://genworlds.com/docs/category/the-genworlds-framework) has another paradigm, and some things are easier to implement in the Genworlds Simulations, while others in the abstractions here (using subagents, for example), but there is a lot of similar concepts. Agents should be controvertible from one form to another (`World`s correspond to the contexts), in particular for the possibility of using the agents from the future Genworlds marketplace.
