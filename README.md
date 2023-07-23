@@ -17,7 +17,14 @@ A useage example: let's say you are building an agent for sales outreach. Then, 
 The goal is that in the end, something like this will be possible:
 
 ```python
-print('Result:', get_agent('Taskmaster', subagents=['Writer', 'Planner', 'researchagents.com/WebResearcher', 'TermAgent'], tools=['Terminal', 'WriteFile']).run('Research information about AI agents, write an overview article about them in LaTeX, and give me the pdf').result())
+print('Result:', 
+      get_agent(
+          'Taskmaster', 
+          subagents=['Writer', 'Planner', 'researchagents.com/WebResearcher', 'TermAgent'], 
+          tools=['Terminal', 'WriteFile']
+      )
+      .run('Research information about AI agents, write an overview article about them in LaTeX, and give me the pdf')
+      .result())
 # Result: {'pdf_path': 'agents_overview.pdf'}
 ```
 
